@@ -1,0 +1,154 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "elwin.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/elwin/v1/experiments": {
+      "post": {
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/apiGetReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiGetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Elwin"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiExperiment": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "params": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiParam"
+          }
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "apiExperimentList": {
+      "type": "object",
+      "properties": {
+        "experiments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiExperiment"
+          }
+        }
+      }
+    },
+    "apiGetReply": {
+      "type": "object",
+      "properties": {
+        "experiments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiExperiment"
+          }
+        },
+        "group": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/apiExperimentList"
+          }
+        }
+      }
+    },
+    "apiGetRequest": {
+      "type": "object",
+      "properties": {
+        "userID": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apiRequirement"
+          }
+        },
+        "by": {
+          "type": "string"
+        }
+      }
+    },
+    "apiOperation": {
+      "type": "string",
+      "enum": [
+        "EXISTS",
+        "EQUAL",
+        "NOT_EQUAL",
+        "IN",
+        "NOT_IN"
+      ],
+      "default": "EXISTS"
+    },
+    "apiParam": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "apiRequirement": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "op": {
+          "$ref": "#/definitions/apiOperation"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

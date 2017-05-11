@@ -1,0 +1,289 @@
+{
+    "memo": "22a89ae5ccf3ee157626731580a4426f20cac09edc5c24a9e7a29d892c376af4",
+    "projects": [
+        {
+            "name": "github.com/beorn7/perks",
+            "branch": "master",
+            "revision": "4c0e84591b9aa9e6dcfdf3e020114cd81f89d5f9",
+            "packages": [
+                "quantile"
+            ]
+        },
+        {
+            "name": "github.com/boltdb/bolt",
+            "branch": "master",
+            "revision": "e9cf4fae01b5a8ff89d0ec6b32f0d9c9f79aefdd",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/foolusion/elwinprotos",
+            "branch": "master",
+            "revision": "af9ae3e99c2c87721ae18b172211399c86644c92",
+            "packages": [
+                "elwin",
+                "storage"
+            ]
+        },
+        {
+            "name": "github.com/fsnotify/fsnotify",
+            "version": "v1.4.2",
+            "revision": "629574ca2a5df945712d3079857300b5e4da0236",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/gogo/protobuf",
+            "branch": "master",
+            "revision": "30433562cfbf487fe1df7cd26c7bab168d2f14d0",
+            "packages": [
+                "gogoproto",
+                "proto",
+                "sortkeys"
+            ]
+        },
+        {
+            "name": "github.com/golang/glog",
+            "branch": "master",
+            "revision": "23def4e6c14b4da8ac2ed8007337bc5eb5007998",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/golang/protobuf",
+            "branch": "master",
+            "revision": "2bba0603135d7d7f5cb73b2125beeda19c09f4ef",
+            "packages": [
+                "jsonpb",
+                "proto",
+                "protoc-gen-go/descriptor",
+                "ptypes/any"
+            ]
+        },
+        {
+            "name": "github.com/grpc-ecosystem/go-grpc-prometheus",
+            "branch": "master",
+            "revision": "2500245aa6110c562d17020fb31a2c133d737799",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/grpc-ecosystem/grpc-gateway",
+            "version": "v1.2.2",
+            "revision": "589b126116b5fc961939b3e156c29e4d9d58222f",
+            "packages": [
+                "runtime",
+                "utilities"
+            ]
+        },
+        {
+            "name": "github.com/hashicorp/hcl",
+            "branch": "master",
+            "revision": "7fa7fff964d035e8a162cce3a164b3ad02ad651b",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/magiconair/properties",
+            "version": "v1.7.2",
+            "revision": "f917359f079a3759162704eaa8caeec3d01d9f91",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/matttproud/golang_protobuf_extensions",
+            "version": "v1.0.0",
+            "revision": "3247c84500bff8d9fb6d579d800f20b3e091582c",
+            "packages": [
+                "pbutil"
+            ]
+        },
+        {
+            "name": "github.com/mitchellh/mapstructure",
+            "branch": "master",
+            "revision": "cc8532a8e9a55ea36402aa21efdf403a60d34096",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/pelletier/go-buffruneio",
+            "version": "v0.2.0",
+            "revision": "c37440a7cf42ac63b919c752ca73a85067e05992",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/pelletier/go-toml",
+            "version": "v0.5.0",
+            "revision": "13d49d4606eb801b8f01ae542b4afc4c6ee3d84a",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/pkg/errors",
+            "branch": "master",
+            "revision": "ff09b135c25aae272398c51a07235b90a75aa4f0",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/prometheus/client_golang",
+            "branch": "master",
+            "revision": "7d9484283ebefa862b5b7727d4344cfdf9a0d138",
+            "packages": [
+                "prometheus",
+                "prometheus/promhttp"
+            ]
+        },
+        {
+            "name": "github.com/prometheus/client_model",
+            "branch": "master",
+            "revision": "6f3806018612930941127f2a7c6c453ba2c527d2",
+            "packages": [
+                "go"
+            ]
+        },
+        {
+            "name": "github.com/prometheus/common",
+            "branch": "master",
+            "revision": "13ba4ddd0caa9c28ca7b7bffe1dfa9ed8d5ef207",
+            "packages": [
+                "expfmt",
+                "model"
+            ]
+        },
+        {
+            "name": "github.com/prometheus/procfs",
+            "branch": "master",
+            "revision": "6ac8c5d890d415025dd5aae7595bcb2a6e7e2fad",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/spf13/afero",
+            "branch": "master",
+            "revision": "9be650865eab0c12963d8753212f4f9c66cdcf12",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/spf13/cast",
+            "version": "v1.1.0",
+            "revision": "acbeb36b902d72a7a4c18e8f3241075e7ab763e4",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/spf13/jwalterweatherman",
+            "branch": "master",
+            "revision": "fa7ca7e836cf3a8bb4ebf799f472c12d7e903d66",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/spf13/pflag",
+            "branch": "master",
+            "revision": "f1d95a35e132e8a1868023a08932b14f0b8b8fcb",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/spf13/viper",
+            "branch": "master",
+            "revision": "0967fc9aceab2ce9da34061253ac10fb99bba5b2",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "golang.org/x/net",
+            "branch": "master",
+            "revision": "da118f7b8e5954f39d0d2130ab35d4bf0e3cb344",
+            "packages": [
+                "context",
+                "http2",
+                "http2/hpack",
+                "trace"
+            ]
+        },
+        {
+            "name": "golang.org/x/sys",
+            "branch": "master",
+            "revision": "9ccfe848b9db8435a24c424abbc07a921adf1df5",
+            "packages": [
+                "unix"
+            ]
+        },
+        {
+            "name": "golang.org/x/text",
+            "branch": "master",
+            "revision": "470f45bf29f4147d6fbd7dfd0a02a848e49f5bf4",
+            "packages": [
+                "secure/bidirule",
+                "transform",
+                "unicode/norm"
+            ]
+        },
+        {
+            "name": "google.golang.org/genproto",
+            "branch": "master",
+            "revision": "411e09b969b1170a9f0c467558eb4c4c110d9c77",
+            "packages": [
+                "googleapis/api/annotations",
+                "googleapis/rpc/status"
+            ]
+        },
+        {
+            "name": "google.golang.org/grpc",
+            "branch": "master",
+            "revision": "b610ffd3f8786563002bd5b6a9951d56f64a4921",
+            "packages": [
+                ".",
+                "codes",
+                "grpclog",
+                "metadata"
+            ]
+        },
+        {
+            "name": "gopkg.in/mgo.v2",
+            "branch": "v2",
+            "revision": "3f83fa5005286a7fe593b055f0d7771a7dce4655",
+            "packages": [
+                ".",
+                "bson"
+            ]
+        },
+        {
+            "name": "gopkg.in/yaml.v2",
+            "branch": "v2",
+            "revision": "cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "k8s.io/apimachinery",
+            "branch": "master",
+            "revision": "c1b276d6169561e7973bb67c81e3b25a493ed80c",
+            "packages": [
+                "pkg/labels",
+                "pkg/selection"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,246 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "intake.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/experiment-change-state": {
+      "post": {
+        "operationId": "ExperimentChangeState",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/intakeExperimentChangeStateReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/intakeExperimentChangeStateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ExperimentIntake"
+        ]
+      }
+    },
+    "/api/v1/experiment-intake": {
+      "post": {
+        "summary": "ExperimentIntake takes a request from a web form and creates the\nexperiment in the data store.",
+        "operationId": "ExperimentIntake",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/intakeExperimentIntakeReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/intakeExperimentIntakeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ExperimentIntake"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "intakeExperimentChangeStateReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/intakeState"
+        }
+      }
+    },
+    "intakeExperimentChangeStateRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/intakeState"
+        }
+      }
+    },
+    "intakeExperimentIntakeReply": {
+      "type": "object"
+    },
+    "intakeExperimentIntakeRequest": {
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/intakeExperimentMetadata"
+        },
+        "experiment": {
+          "$ref": "#/definitions/storageExperiment"
+        }
+      },
+      "title": "ExperimentIntakeRequest creates an experiment in the database and sends a notification for reviewers"
+    },
+    "intakeExperimentMetadata": {
+      "type": "object",
+      "properties": {
+        "userID": {
+          "type": "string"
+        },
+        "programManagerID": {
+          "type": "string"
+        },
+        "productManagerID": {
+          "type": "string"
+        },
+        "hypothesis": {
+          "type": "string"
+        },
+        "kpi": {
+          "type": "string"
+        },
+        "timeBound": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "plannedStartTime": {
+          "type": "string"
+        },
+        "plannedEndTime": {
+          "type": "string"
+        },
+        "actualStartTime": {
+          "type": "string"
+        },
+        "actualEndTime": {
+          "type": "string"
+        },
+        "actionPlanNegative": {
+          "type": "string"
+        },
+        "actionPlanNeutral": {
+          "type": "string"
+        },
+        "experimentType": {
+          "type": "string"
+        }
+      },
+      "title": "ExperimentMetadata all the junk that elwin doesn't care about"
+    },
+    "intakeState": {
+      "type": "string",
+      "enum": [
+        "ERR",
+        "START",
+        "END"
+      ],
+      "default": "ERR"
+    },
+    "storageExperiment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "params": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/storageParam"
+          }
+        },
+        "segments": {
+          "$ref": "#/definitions/storageSegments"
+        },
+        "detailName": {
+          "type": "string"
+        }
+      },
+      "title": "Experiment structure"
+    },
+    "storageParam": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/definitions/storageValue"
+        }
+      },
+      "title": "Param structure"
+    },
+    "storageSegments": {
+      "type": "object",
+      "properties": {
+        "len": {
+          "type": "string",
+          "format": "int64"
+        },
+        "b": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "storageValue": {
+      "type": "object",
+      "properties": {
+        "choices": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "weights": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "title": "Value structure"
+    }
+  }
+}

@@ -1,0 +1,90 @@
+kind: Deployment
+apiVersion: extensions/v1beta1 #change to apps/v1beta1 in 1.6
+metadata:
+  name: "{{ .Release.Name }}-{{ .Values.elwin.name }}"
+  labels:
+    app: "{{ .Release.Name }}-{{ .Values.elwin.name }}"
+    env: "{{ .Values.environment }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+  annotations:
+    "helm.sh/created": "{{ .Release.Time.Seconds }}"
+spec:
+  minReadySeconds: 5
+  replicas: 5
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 2
+  template:
+    metadata:
+      labels:
+        run: "{{ .Release.Name }}-{{ .Values.elwin.name }}"
+        env: "{{ .Values.environment }}"
+      annotations: # change to pod affinity field
+        scheduler.alpha.kubernetes.io/affinity: |
+          {
+            "podAntiAffinity": {
+              "preferredDuringSchedulingIgnoredDuringExecution": [
+                {
+                  "weight": 50,
+                  "labelSelector": {
+                    "matchExpressions": [
+                      {
+                        "key": "run",
+                        "operator": "In",
+                        "values": ["{{ .Release.Name }}-{{ .Values.elwin.name }}"]
+                      },
+                      {
+                        "key": "env",
+                        "operator": "In",
+                        "values": ["{{ .Values.environment }}"]
+                      }
+                    ]
+                  },
+                  "topologyKey": "kubernetes.io/hostname"
+                }
+              ]
+            }
+          }
+    spec:
+      # affinity goes here
+      containers:
+      - name: grpc-gateway
+        image: "{{ .Values.image }}"
+        imagePullPolicy: Always
+        command:
+        - "elwin-grpc-gateway"
+        - "-storage_endpoint=localhost:{{ .Values.elwin.grpcPort }}"
+        - "-listen_address=:{{ .Values.elwin.jsonPort }}"
+      - name: elwin
+        image: "{{ .Values.image }}"
+        imagePullPolicy: Always
+        env:
+        - name: ELWIN_GRPC_ADDRESS
+          value: ":{{ .Values.elwin.grpcPort }}"
+        - name: ELWIN_JSON_ADDRESS
+          value: ":{{ .Values.elwin.metricsPort }}"
+        - name: ELWIN_READ_TIMEOUT
+          value: "{{ .Values.elwin.readTimeout }}"
+        - name: ELWIN_STORAGE_ADDRESS
+          value: "{{ .Release.Name }}-{{ .Values.mongo.name }}:80"
+        - name: ELWIN_UPDATE_FAIL_TIMEOUT
+          value: "{{ .Values.elwin.failTimeout }}"
+        - name: ELWIN_UPDATE_INTERVAL
+          value: "{{ .Values.elwin.updateInterval }}"
+        - name: ELWIN_WRITE_TIMEOUT
+          value: "{{ .Values.elwin.writeTimeout }}"
+        - name: ELWIN_IDLE_TIMEOUT
+          value: "{{ .Values.elwin.idleTimeout }}"
+        command:
+        - elwin
+        resources:
+          limits:
+            memory: 128Mi
+          requests:
+            cpu: 50m
+            memory: 128Mi
